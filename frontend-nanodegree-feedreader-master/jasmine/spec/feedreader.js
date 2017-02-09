@@ -105,11 +105,16 @@ $(function() {
          * Remember, loadFeed() is asynchronous.
          */
          beforeEach(function(done) {
-           loadFeed(0, done);
+           loadFeed(1, done); //This loads the feed at position 1.
+           var $feedbefore = $('.feed').html; //We can use this loaded feed as our feed before testing.
+           done();
          });
 
          it('when new feed is loaded content changes', function() {
-
+           loadFeed(2, done);
+           var $feedafter = $('.feed').html;
+           expect($feedafter).not.toBeEqualTo($feedbefore);
+           done();
          });
          });
 }());
