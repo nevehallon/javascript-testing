@@ -5,4 +5,5 @@ This project is based on the concept of test-driven javascript programming. Here
 jasmine testing framework to create a series of test suites for the efficiency of my application.
 
 ##Getting Started
+* To load the feed reader app with the jasmine specsheet simply clone this repository or create a pull request 
 
