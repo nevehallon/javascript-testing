@@ -83,14 +83,11 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
         beforeEach(function(done) {
-            loadFeed(0, function() {
-                done();
-            });
+            loadFeed(0, done);
         });
 
-        it('atleast single entry element within the feed container', function(done) {
+        it('atleast single entry element within the feed container', function() {
             expect($('.feed .entry').length).toBeGreaterThan(0);
-            done();
         });
 
     });
@@ -105,7 +102,7 @@ $(function() {
          */
         beforeEach(function(done) {
             loadFeed(0, function() { //This loads the feed at position 1.
-                var feedbefore = $('.feed').html(); //We can use this loaded feed as our feed before testing.
+                 feedbefore = $('.feed').html(); //We can use this loaded feed as our feed before testing.
                 /*This done function tells the jasmine framework that it shouldn't start testing the spec before
                  *the async part of the function is over.*/
                 done();
@@ -114,7 +111,7 @@ $(function() {
 
         it('when new feed is loaded content changes', function(done) {
             loadFeed(1, function() {
-                var feedafter = $('.feed').html();
+                feedafter = $('.feed').html();
                 expect(feedafter).not.toEqual(feedbefore);
                 done();
             });
