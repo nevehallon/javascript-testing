@@ -23,10 +23,10 @@ To write more tests you can refer to the jasmine framework documentation [here](
 2. [Jasmine 2.2](https://jasmine.github.io/index.html) testing framework.
 
 ## Links for reference
-'''
+```
 1. https://lostechies.com/derickbailey/2012/08/18/jasmine-async-making-asynchronous-testing-with-jasmine-suck-less/
 2. http://www.htmlgoodies.com/html5/javascript/using-the-done-method-in-your-jasmine-driven-asynchronous-javascript-tests.html#fbid=XUV6VVM3I2G
-'''
+```
 
 ### Note
 There is one error that keeps showing up on the developer console. It says that the module feeds cannot be found. If anybody has an explanation please feel free to implement a bug fix or simply let me know how to fix it !!
