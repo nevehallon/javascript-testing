@@ -1,9 +1,3 @@
-/* feedreader.js
- *
- * This is the spec file that Jasmine will read and contains
- * all of the tests that will be run against your application.
- */
-
 /* We're placing all of our tests within the $() function,
  * since some of these tests may require DOM elements. We want
  * to ensure they don't run until the DOM is ready.
@@ -16,10 +10,7 @@ $(function() {
     describe('RSS Feeds', function() {
         /* This is our first test - it tests to make sure that the
          * allFeeds variable has been defined and that it is not
-         * empty. Experiment with this before you get started on
-         * the rest of this project. What happens when you change
-         * allFeeds in app.js to be an empty array and refresh the
-         * page?
+         * empty.
          */
         it('are defined', function() {
             expect(allFeeds).toBeDefined();
@@ -33,6 +24,8 @@ $(function() {
          it('url is defined and is not empty', function() {
             allFeeds.forEach(function(feed) {
               var feedUrl = feed.url;
+              /*It is always more efficient to access a static DOM element once and store
+               *it in a variable than accessing it multiple times.*/
               expect(feedUrl).toBeDefined();
               expect(feedUrl.length).not.toBe(0);
             });
@@ -46,6 +39,7 @@ $(function() {
          it('name is defined and is not empty', function() {
            allFeeds.forEach(function(feed) {
              var feedName = feed.name;
+             //A good way to check whether a class or a field is empty or not is to use the toBeDefined() method.
              expect(feedName).toBeDefined();
              expect(feedName.length).not.toBe(0);
            });
@@ -61,6 +55,7 @@ $(function() {
          * hiding/showing of the menu element.
          */
          it('hidden by default', function() {
+           //hasClass checks whether a class is present on the screen or not using boolean values.
             expect($('body').hasClass('menu-hidden')).toBe(true);
          });
 
@@ -70,10 +65,11 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
           it('menu changing visibility', function() {
-            $(".menu-icon-link").trigger('click');
+            $(".menu-icon-link").trigger('click'); //This sets the class menu-icon-link to be triggered when it is clicked.
+            /*When the button is triggered the class menu-hidden will disappear from the body.
+             *the same approach is used to show the menu-hidden class on the screen as well.*/
             expect($('body').hasClass('menu-hidden')).toBe(false);
-
-            $(".menu-icon-link").trigger('click');
+                    $(".menu-icon-link").trigger('click');
             expect($('body').hasClass('menu-hidden')).toBe(true);
           });
       });
@@ -89,7 +85,7 @@ $(function() {
       beforeEach(function(done) {
         loadFeed(0, function() {
           done();
-        }); //This prevents the test suite from running before the feed is loaded.
+        });
       });
 
       it('atleast single entry element within the feed container', function(done) {
@@ -100,6 +96,7 @@ $(function() {
       });
     /* TODO: Write a new test suite named "New Feed Selection"*/
         describe('New Feed Selection', function() {
+          //These are variables that will hold the values for two feeds after loading.
           var feedbefore;
           var feedafter;
         /* TODO: Write a test that ensures when a new feed is loaded
@@ -109,6 +106,8 @@ $(function() {
          beforeEach(function(done) {
            loadFeed(0, function() { //This loads the feed at position 1.
            var feedbefore = $('.feed').html(); //We can use this loaded feed as our feed before testing.
+           /*This done function tells the jasmine framework that it shouldn't start testing the spec before
+            *the async part of the function is over.*/
            done();
          });
         });
